@@ -7,13 +7,13 @@ Tree data structure
 
 */
 template <typename T>
-class StringList{
+class StringTree{
 	public:
-		StringList() = default;
-		~StringList(){
+		StringTree() = default;
+		~StringTree(){
 			/*TODO*/
 		}
-		StringList& operator[](std::string index){
+		StringTree& operator[](std::string index){
 			if(index.size() == 0) return (*this);
 			//We need to find it.
 			char c = index.front(); 
@@ -25,12 +25,12 @@ class StringList{
 			if (children[c].get()) return (*children[c].get())[index];
 			/*We must create children of c*/
 			/*std::cout << "\nEVENT: Allocation with remaining index: " << index << std::endl;*/
-			children[c] = std::unique_ptr<StringList<T>> (new StringList<T>());
+			children[c] = std::unique_ptr<StringTree<T>> (new StringTree<T>());
 			return (*children[c].get())[index];
 		}
 		T data; //the data we hold.
 	private:
-		std::array<std::unique_ptr<StringList<T>>, 127> children;
+		std::array<std::unique_ptr<StringTree<T>>, 127> children;
 		
 };
 

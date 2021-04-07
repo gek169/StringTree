@@ -2,7 +2,7 @@
 
 
 void myfunc(){
-	StringList<int> bruh;
+	StringTree<int> bruh;
 	bruh.data = int();
 	bruh["Yuck"].data = 5;
 	bruh["Duck"].data = 7;
